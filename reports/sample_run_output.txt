@@ -1,0 +1,11 @@
+=== Authentication Log Analyzer Summary ===
+Input file        : data/auth_logs.csv
+Total events      : 18 (Success: 8, Failure: 10)
+Distinct accounts : 9
+Distinct IPs      : 7
+Total alerts      : 4
+  - Repeated failures       : 1
+  - Success after failures  : 1
+  - Multiple accounts       : 1
+  - After-hours success     : 1
+JSON report saved : reports/analysis_results.json

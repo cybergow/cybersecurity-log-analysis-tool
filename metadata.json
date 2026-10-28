@@ -1,0 +1,6 @@
+{
+  "name": "Cybersecurity Assessment Workbench — Tasks 6 & 13",
+  "description": "Interactive authentication log investigation workbench, Python defensive triage analyzer, automated unit test suite (T1–T5), and deliverable generator for Cybersecurity Assessment Tasks 6 and 13.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

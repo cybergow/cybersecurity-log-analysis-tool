@@ -1,0 +1,85 @@
+{
+  "summary": {
+    "total_events": 18,
+    "total_failures": 10,
+    "total_successes": 8,
+    "distinct_users": 9,
+    "distinct_ips": 7,
+    "total_alerts": 4,
+    "alerts_by_rule": {
+      "Repeated failures": 1,
+      "Success after failures": 1,
+      "Multiple accounts": 1,
+      "After-hours success": 1
+    }
+  },
+  "thresholds": {
+    "repeated_failures_min": 5,
+    "success_after_failures_min": 3,
+    "multiple_accounts_min": 3,
+    "normal_hours_window": "06:00-22:00"
+  },
+  "alerts": [
+    {
+      "rule_id": "R1_REPEATED_FAILURES",
+      "rule": "Repeated failures",
+      "severity": "medium",
+      "source_ip": "192.0.2.20",
+      "usernames": [
+        "maya"
+      ],
+      "failure_count": 5,
+      "first_seen": "2026-10-27T09:02:11",
+      "last_seen": "2026-10-27T09:03:05",
+      "meaning": "Flag for investigation.",
+      "possible_interpretation": "Password mistakes or guessing activity.",
+      "recommended_followup": "Check account, MFA, source ownership, and rate limiting."
+    },
+    {
+      "rule_id": "R2_SUCCESS_AFTER_FAILURES",
+      "rule": "Success after failures",
+      "severity": "high",
+      "username": "maya",
+      "source_ip": "192.0.2.20",
+      "earlier_failure_count": 5,
+      "first_failure_timestamp": "2026-10-27T09:02:11",
+      "success_timestamp": "2026-10-27T09:03:42",
+      "meaning": "Verify account and session.",
+      "possible_interpretation": "Could be legitimate recovery or successful guessing.",
+      "recommended_followup": "Verify with user; review session/device records."
+    },
+    {
+      "rule_id": "R3_MULTIPLE_ACCOUNTS",
+      "rule": "Multiple accounts",
+      "severity": "medium",
+      "source_ip": "198.51.100.45",
+      "distinct_username_count": 4,
+      "usernames": [
+        "alex",
+        "devon",
+        "priya",
+        "sam"
+      ],
+      "total_events": 4,
+      "first_seen": "2026-10-27T10:14:05",
+      "last_seen": "2026-10-27T10:15:44",
+      "meaning": "Check shared-source behavior or enumeration.",
+      "possible_interpretation": "Could be enumeration or a shared VPN/NAT source.",
+      "recommended_followup": "Confirm network ownership and expected usage."
+    },
+    {
+      "rule_id": "R4_AFTER_HOURS_SUCCESS",
+      "rule": "After-hours success",
+      "severity": "low",
+      "username": "jordan",
+      "source_ip": "203.0.113.88",
+      "timestamp": "2026-10-27T23:48:19",
+      "normal_window": "06:00-22:00",
+      "meaning": "Compare with expected schedule.",
+      "possible_interpretation": "May be unusual for that account.",
+      "recommended_followup": "Compare schedule and approved remote access."
+    }
+  ],
+  "disclaimer": "These are demonstration triage rules. Alerts do not prove compromise or attribute an actor; corroborate with MFA, session, device, and network context.",
+  "input_file": "data/auth_logs.csv"
+}

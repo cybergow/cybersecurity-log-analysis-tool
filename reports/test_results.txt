@@ -1,0 +1,15 @@
+test_t1_five_failed_events_from_one_ip_triggers_alert (test_log_analyzer.TestLogAnalyzer)
+T1: Five failed events from one IP -> Repeated-failed-logins alert. ... ok
+test_t2_three_failures_then_success_triggers_alert (test_log_analyzer.TestLogAnalyzer)
+T2: Three failures then success for same user/IP -> Success-after-failures alert. ... ok
+test_t3_only_two_failures_from_one_ip_no_alert (test_log_analyzer.TestLogAnalyzer)
+T3: Only two failures from one IP -> No repeated-failure threshold alert. ... ok
+test_t4_successful_login_at_2348_triggers_after_hours_alert (test_log_analyzer.TestLogAnalyzer)
+T4: Successful login at 23:48 in sample data -> After-hours triage alert. ... ok
+test_t5_missing_required_column_or_invalid_timestamp_raises_error (test_log_analyzer.TestLogAnalyzer)
+T5: Missing required CSV column or invalid timestamp -> Input validation error. ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+OK
